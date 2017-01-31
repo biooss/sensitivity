@@ -155,3 +155,13 @@ export(sobolroauc)
 S3method(tell, sobolroauc)
 S3method(print, sobolroauc)
 S3method(plot, sobolroauc)
+
+export(shapleyPermEx)
+S3method(tell, shapleyPermEx)
+S3method(print, shapleyPermEx)
+S3method(plot, shapleyPermEx)
+
+export(shapleyPermRand)
+S3method(tell, shapleyPermRand)
+S3method(print, shapleyPermRand)
+S3method(plot, shapleyPermRand)
