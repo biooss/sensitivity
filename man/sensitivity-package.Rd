@@ -19,7 +19,7 @@
       \item Poincare constants for Derivative-based Global Sensitivity Measures (DGSM) (Lambon et al., 2013; Roustant et al., 2016) (\code{\link{PoincareConstant}}) and (\code{\link{PoincareOptimal}}),
       \item Distributed Evaluation of Local Sensitivity Analysis (DELSA) (Rakovec et al., 2014) (\code{\link{delsa}});
       }
-    \item{Variance-based sensitivity indices (Sobol' indices):
+    \item Variance-based sensitivity indices (Sobol' indices, with independent inputs):
 	  \itemize{
       \item Monte Carlo estimation of Sobol' indices (also called pick-freeze method): 
       \itemize{
@@ -39,7 +39,12 @@
       \item Estimation of the Sobol' first order and total indices with Saltelli's so-called "extended-FAST" method (Saltelli et al., 1999) (\code{\link{fast99}}),
       \item Estimation of the Sobol' first order and total indices with kriging-based global sensitivity analysis (Le Gratiet et al., 2014) (\code{\link{sobolGP}});
     }
-    \item{Support index functions (\code{\link{support}}) of Fruth et al. (2015)};
+    \item Variance-based sensitivity indices (Shapley effects and Sobol' indices, with independent or dependent inputs):
+	  \itemize{
+	    \item Estimation by examining all permutations of inputs (Song et al., 2016) (\code{\link{shapleyPermEx}})
+	    \item Estimation by randomly sampling permutations of inputs (Song et al., 2016) (\code{\link{shapleyPermRand}})
+	  }
+    \item Support index functions (\code{\link{support}}) of Fruth et al. (2015);
     \item Sensitivity Indices based on Csiszar f-divergence (\code{\link{sensiFdiv}}) (particular cases: Borgonovo's indices and mutual-information based indices) and Hilbert-Schmidt Independence Criterion (\code{\link{sensiHSIC}}) of Da Veiga (2015);
     \item Reliability sensitivity analysis by the Perturbed-Law based Indices (\code{\link{PLI}}) of Lemaitre et al. (2015) and (\code{\link{PLIquantile}}) of Sueur et al. (2016);
     \item Sobol' indices for multidimensional outputs (\code{\link{sobolMultOut}}): Aggregated Sobol' indices (Lamboni et al., 2011; Gamboa et al., 2014) and functional (1D) Sobol' indices.
@@ -48,7 +53,7 @@
   Moreover, some utilities are provided: standard test-cases
   (\code{\link{testmodels}}) and template file generation
   (\code{\link{template.replace}}).
-} }
+}
 
 \section{Model managing}{
   The \pkg{sensitivity} package has been designed to work either models written in \R
@@ -77,23 +82,20 @@
 }
 
 
-\author{Gilles Pujol, Bertrand Iooss, Alexandre Janon with contributions from Paul Lemaitre for the \code{\link{PLI}} function, Laurent Gilquin for the \code{\link{sobolroalhs}}, \code{\link{sobolroauc}} and \code{\link{sobolSalt}} functions, Loic le Gratiet for the \code{\link{sobolGP}} function, Khalid Boumhaout, Taieb Touati and Bernardo Ramos for the \code{\link{sobolowen}} and \code{\link{soboltouati}} functions, Jana Fruth for the \code{\link{PoincareConstant}}, \code{\link{support}}, \code{\link{sobolTIIlo}} and \code{\link{sobolTIIpf}} functions, Sebastien Da veiga for the \code{\link{sensiFdiv}} and \code{\link{sensiHSIC}} functions, Joseph Guillaume for the \code{\link{delsa}} and \code{\link{parameterSets}} functions, Olivier Roustant for the \code{\link{PoincareOptimal}} function, Frank Weber, Thibault Delage and Roelof Oomen.
+\author{Gilles Pujol, Bertrand Iooss, Alexandre Janon with contributions from Paul Lemaitre for the \code{\link{PLI}} function, Laurent Gilquin for the \code{\link{sobolroalhs}}, \code{\link{sobolroauc}} and \code{\link{sobolSalt}} functions, Loic le Gratiet for the \code{\link{sobolGP}} function, Khalid Boumhaout, Taieb Touati and Bernardo Ramos for the \code{\link{sobolowen}} and \code{\link{soboltouati}} functions, Jana Fruth for the \code{\link{PoincareConstant}}, \code{\link{support}}, \code{\link{sobolTIIlo}} and \code{\link{sobolTIIpf}} functions, Sebastien Da veiga for the \code{\link{sensiFdiv}} and \code{\link{sensiHSIC}} functions, Joseph Guillaume for the \code{\link{delsa}} and \code{\link{parameterSets}} functions, Olivier Roustant for the \code{\link{PoincareOptimal}} function, Eunhye Song, Barry L. Nelson and Jeremy Staum for the \code{\link{shapleyPermEx}} and \code{\link{shapleyPermRand}} functions, Frank Weber, Thibault Delage and Roelof Oomen.
 
 (maintainer: Bertrand Iooss \email{biooss@yahoo.fr})}
 
 \references{
-R. Faivre, B. Iooss, S. Mahevas, D. Makowski, H. Monod, editors, 2013, 
-\emph{Analyse de sensibilite et exploration de modeles. Applications aux 
-modeles environnementaux}, Editions Quae.
+R. Faivre, B. Iooss, S. Mahevas, D. Makowski, H. Monod, editors, 2013, \emph{Analyse de sensibilite et exploration de modeles. Applications aux modeles environnementaux}, Editions Quae.
 
 B. Iooss and A. Saltelli, 2017, \emph{Introduction: Sensitivity analysis.} In: \emph{Springer Handbook on Uncertainty Quantification}, R. Ghanem, D. Higdon and H. Owhadi (Eds), Springer. href{http://link.springer.com/referenceworkentry/10.1007/978-3-319-11259-6_31-1}
 
 B. Iooss and P. Lemaitre, 2015, \emph{A review on global sensitivity analysis methods}. In \emph{Uncertainty management in Simulation-Optimization of Complex Systems: Algorithms and Applications}, C. Meloni and G. Dellino (eds), Springer.
 
-A. Saltelli, K. Chan and E. M. Scott eds, 2000, \emph{Sensitivity Analysis}, 
-Wiley.
+A. Saltelli, K. Chan and E. M. Scott eds, 2000, \emph{Sensitivity Analysis}, Wiley.
 
-A. Saltelli, P. Annoni, I. Azzini, F. Campolongo, M. Ratto and S. Tarantola, 2010, \emph{Variance based sensitivity analysis of model output. Design and estimator for the total sensitivity index}, Computer Physics Communications 181, 259--270.
+A. Saltelli et al., 2008, \emph{Global Sensitivity Analysis: The Primer}, Wiley
 
 }
 
