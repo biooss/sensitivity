@@ -78,9 +78,13 @@ shapleyPermEx(model = NULL, Xall, Xset, d, Nv, No, Ni = 3, colnames = NULL, \dot
 }
 
 \references{
-B. Iooss, 2017, \emph{Analyse de sensibilite avec entrees dependantes :
+B. Iooss and C. Prieur, 2017, \emph{Analyse de sensibilite avec entrees dependantes :
 estimation par echantillonnage et par metamodeles des indices de Shapley}, 
 Submitted to 49emes Journees de la SFdS, Avignon, France, May 2017.
+
+S. Kucherenko, S. Tarantola, and P. Annoni, 2012, \emph{Estimation of global  
+sensitivity indices for models with dependent variables},
+Computer Physics Communications, 183, 937--946.
 
 A.B. Owen, 2014, \emph{Sobol' indices and Shapley value}, SIAM/ASA 
 Journal of Uncertainty Quantification, 2, 245--251.
@@ -104,10 +108,12 @@ Bertrand Iooss, Eunhye Song, Barry L. Nelson, Jeremy Staum
 
 \examples{
 
+\dontrun{
+
 ##################################
 # Test case : the Ishigami function (3 uniform independent inputs)
+# See Iooss and Prieur (2017)
 
-\dontrun{
 library(gtools)
 
 d <- 3
@@ -117,13 +123,11 @@ Xset <- function(n, Sj, Sjc, xjc) matrix(runif(n*length(Sj),-pi,pi),nc=length(Sj
 x <- shapleyPermEx(model = ishigami.fun, Xall=Xall, Xset=Xset, d=d, Nv=1e4, No = 1e3, Ni = 3)
 print(x)
 plot(x)
-}
 
 ##################################
 # Test case : Linear model (3 Gaussian inputs including 2 dependent)
-# See Owen and Prieur (2016)
+# See Iooss and Prieur (2017)
 
-\dontrun{
 library(gtools)
 library(mvtnorm) # Multivariate Gaussian variables
 library(condMVNorm) # Conditional multivariate Gaussian variables
