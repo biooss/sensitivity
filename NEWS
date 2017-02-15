@@ -1,4 +1,12 @@
 
+Changes in version 1.14.1:
+
+    o   Resolved bug about "sobolmartinez" method (now suppressed) in 
+    the sobolMultOut() function
+
+    o   sobolMultOut() now returns the functional Sobol' indices via
+    the attributes "Sfct" and "Tfct" of the output object
+
 Changes in version 1.14.0:
 
     o   Added functions for calculating Shapley indices: shapleyPermEx()
